@@ -21,7 +21,7 @@ class NeotagsPlugin(object):
 
     @neovim.autocmd('BufWritePost', pattern='*')
     def echo_test(self):
-        lines = self.vim.current.buffer[start-1:end]
+        lines = self.vim.current.buffer
         print(lines)
         self.echo("je suis lambda")
 
