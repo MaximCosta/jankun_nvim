@@ -10,3 +10,7 @@ class NeotagsPlugin(object):
     @neovim.autocmd('BufWritePost', pattern='*', eval='expand("<afile>:p")')
     def update_tags_for_file(self, filename):
         self.nvim.out_write('neotags > ' + message + "\n")
+
+    @neovim.function('DoItPython')
+    def doItPython(self, args):
+        self.vim.command('echo "hello from DoItPython"')
