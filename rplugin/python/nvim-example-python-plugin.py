@@ -7,7 +7,6 @@ class NeotagsPlugin(object):
     def __init__(self, nvim):
         self.nvim = nvim
 
-
     def echo(self, *msgs):
         msg = ' '.join([str(m) for m in msgs])
         self.nvim.out_write(msg + '\n')
@@ -18,10 +17,12 @@ class NeotagsPlugin(object):
 
     @neovim.autocmd('BufWritePost', pattern='*', eval='expand("<afile>:p")')
     def update_tags_for_file(self, filename):
-        self.nvim.out_write('neotags > ' + message + "\n")
+        self.echo('neotags > ' + message + "\n")
 
     @neovim.autocmd('BufWritePost', pattern='*')
     def echo_test(self):
+        lines = self.vim.current.buffer[start-1:end]
+        print(lines)
         self.echo("je suis lambda")
 
     @neovim.function('DoItPython')
